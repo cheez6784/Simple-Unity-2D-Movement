@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        rb.rotation = 0;
+        rb.angularVelocity = 0;
         // This handles the raycast
         Vector2 rayOrigin = transform.position;
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, castDistance, ground);
