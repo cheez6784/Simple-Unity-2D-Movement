@@ -1,7 +1,7 @@
 # Simple-Unity-2D-Movement
 A simple C# script for unity 2D movement
 
-
+# You Must Freeze The Z Rotation Of The Rigidbody Under "Constraints" For This To Work!
 # Important READ THIS:
 This is a Rigidbody 2D system.
 Any preset values work best for a Unity 2D capsule. Play with this how you would like to. 
