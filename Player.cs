@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
+    // VERY IMPORTANT: Freeze the Z rotation of the Rigidbody2D under "Constraints" Otherwise The Force Will Mess Up The Player.
+    
     // Variables, Vectors, and Refrences used
     private float input;
     public float speed;
