@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Variables, Vectors, and Refrences used
     private float input;
     public float speed;
     public Rigidbody2D rb;
@@ -15,17 +16,18 @@ public class Player : MonoBehaviour
     private bool Grounded;
     public float castDistance;
     public float maxVelocity = 10f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
     private void Update()
     {
+        // This handles the raycast
         Vector2 rayOrigin = transform.position;
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, castDistance, ground);
         Debug.DrawRay(rayOrigin, Vector2.down * castDistance, Color.red);
-
+        // Sets grounded to "true" if you are grounded
         if (hit.collider != null)
         {
             Grounded = true;
@@ -40,16 +42,19 @@ public class Player : MonoBehaviour
     
     void FixedUpdate()
     {
+        // The simplest horizontal movement you can make
         movement = new Vector2(Input.GetAxis("Horizontal") * speed, 0);
         rb.AddForce(movement);
-
+        // Adds friction to prevent you feeling like you are on ice
         Vector2 velocity = rb.velocity;
         velocity.x *= (1.0f - friction);
         rb.velocity = velocity;
+        // Makes you jump if you press W
         if(Input.GetKey(KeyCode.W))
         {
           if(Grounded == true)
                 {
+                    // Just adding force to the bottom of the player
                     Jump = Vector2.up * JumpForce;
                     rb.AddForce(Jump, ForceMode2D.Impulse);
                 }
@@ -57,6 +62,7 @@ public class Player : MonoBehaviour
 
             
         }
+        // This clamps the velocity to "maxVelocity". Probably a horrible way to do this
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 }
