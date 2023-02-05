@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-    // VERY IMPORTANT: Freeze the Z rotation of the Rigidbody2D under "Constraints" Otherwise The Force Will Mess Up The Player.
+    // If you do not want a slight tilt when you move, freeze the Z rotation in your Rigidbody2D under "Constraints"
     
     // Variables, Vectors, and Refrences used
     private float input;
